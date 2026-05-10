@@ -27,5 +27,11 @@ export const HomeStyle = {
     "text-gray-500 font-fira text-lg mt-10 whitespace-pre-wrap",
   textoInformativoResumoProfissional:
     "font-fira text-xl font-bold text-gray-300 whitespace-pre-wrap",
+  idiomas: {
+    textoAtivo:
+      "text-white font-fira text-lg  tranform-all duration-300 ease-in",
+    textoInativo:
+      "text-gray-500 font-fira text-lg tranform-all duration-300 ease-in",
+  },
 };
 4;
