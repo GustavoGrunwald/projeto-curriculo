@@ -48,8 +48,21 @@ export const ComponentsStyle = {
     inativo: "pointer-events-none text-transparent transition-all duration-300",
   },
   textoDescicao: {
-    ativo: "text-gray-20 transition-all duration-300  font-fira",
-    inativo:
-      "text-transparent -translate-x-20 transition-all duration-300 pointer-events-none select-none",
+    ativo: `
+    bg-[#0c0c0c] 
+    p-4 
+    rounded-md 
+    font-fira 
+    text-xs 
+    text-[#cccccc] 
+    border border-white/10 
+    shadow-2xl 
+    mt-3 
+    opacity-100 
+    transition-all duration-500
+  `,
+    inativo: "hidden opacity-0",
+    prompt: "text-[#ffffff] font-bold mr-2",
+    cursor: "inline-block w-2 h-4 bg-[#cccccc] ml-1 align-middle cursor-pisca",
   },
 };

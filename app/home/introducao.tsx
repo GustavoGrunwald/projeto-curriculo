@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
 import { HomeStyle } from "../styles/homeStyle";
 import { useTypewriter } from "../hooks/functions";
+import { TextoCompletoIntroducao } from "../data/dados";
+
+const informativosIntroducao = [
+  "16 anos (04/08/2009)",
+  "grunwald.gustavo@gmail.com",
+  "(41) 99209-6868",
+  "Santa Felicidade, Curitiba - PR",
+];
 
 export function Introducao() {
-  const textoCompleto =
-    "Meu nome é Gustavo Grunwald, sou apaixonado por tecnologia e programação. Desde cedo, sempre tive uma curiosidade insaciável sobre como as coisas funcionam, o que me levou a explorar o mundo da tecnologia. Atualmente, estou cursando o ensino médio e tenho me dedicado a aprender cada vez mais sobre desenvolvimento de software, inteligência artificial e outras áreas relacionadas à tecnologia. Por isso, por meio desse site pretendo compartilhar um pouco da minha jornada, meus projetos e minhas experiências no mundo da tecnologia.";
-
-  const textoExibido = useTypewriter(textoCompleto, 15);
+  const textoExibido = useTypewriter(TextoCompletoIntroducao, 15);
   return (
     <div className={HomeStyle.containerConteudo + " h-100"}>
       <h1 className={HomeStyle.tituloPrincipalConteudo}>
@@ -17,10 +21,9 @@ export function Introducao() {
         <p className={HomeStyle.paragrafoConteudo}>{textoExibido}</p>
         <div className={HomeStyle.linhaIntroducaoConteudo}></div>
         <div className="flex flex-col">
-          <p>16 anos (04/08/2009)</p>
-          <p>grunwald.gustavo@gmail.com</p>
-          <p>(41) 99209-6868</p>
-          <p>Santa Felicidade, Curitiba - PR</p>
+          {informativosIntroducao.map((texto) => (
+            <p className={HomeStyle.paragrafoConteudo}>{texto}</p>
+          ))}
           <a
             className={HomeStyle.linkSideBar}
             href="https://github.com/gustavogrunwald"

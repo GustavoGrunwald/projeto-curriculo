@@ -48,8 +48,19 @@ function LinhaSubConexao({ index, total, topico, texto }: any) {
 
             <div className={conexoesStyle.sub.cartao}>
               <div className={conexoesStyle.sub.cabecalho}>
-                <div className={conexoesStyle.sub.pontoStatus}></div>
+                <div className={conexoesStyle.sub.botoesJanela}>
+                  <div
+                    className={`${conexoesStyle.sub.circulo} bg-[#ff5f56]`}
+                  />
+                  <div
+                    className={`${conexoesStyle.sub.circulo} bg-[#ffbd2e]`}
+                  />
+                  <div
+                    className={`${conexoesStyle.sub.circulo} bg-[#27c93f]`}
+                  />
+                </div>
                 <h1 className={conexoesStyle.sub.titulo}>{topico}</h1>
+                <div className="w-4" />{" "}
               </div>
 
               <div className={conexoesStyle.sub.corpo}>
@@ -57,7 +68,7 @@ function LinhaSubConexao({ index, total, topico, texto }: any) {
                   texto.map((sub, i) => (
                     <div key={i} className={conexoesStyle.sub.itemListaCaixa}>
                       <p className={conexoesStyle.sub.itemListaTitulo}>
-                        {sub.titulo}
+                        <span className="opacity-50">&gt;</span> {sub.titulo}
                       </p>
                       <p className={conexoesStyle.sub.itemListaDesc}>
                         {sub.descricao}
@@ -65,11 +76,17 @@ function LinhaSubConexao({ index, total, topico, texto }: any) {
                     </div>
                   ))
                 ) : (
-                  <p className={conexoesStyle.sub.textoSimples}>{texto}</p>
+                  <div className="flex gap-2">
+                    <span className="text-[#A3E635] opacity-50">$</span>
+                    <p className={conexoesStyle.sub.textoSimples}>{texto}</p>
+                  </div>
                 )}
+                <span className="inline-block w-1 h-4 bg-white/80 cursor-pisca ml-5" />
               </div>
+
               <div className={conexoesStyle.sub.rodapeCodigo}>
-                // module_id: {topico.toLowerCase().replace(/\s/g, "_")}
+                <span>// {topico.toLowerCase().replace(/\s/g, "_")}.sh</span>
+                <span className="animate-pulse">_</span>
               </div>
             </div>
           </div>
@@ -93,7 +110,6 @@ export function SubConexao() {
         <polyline
           points={`0,${TOTAL_ALTURA / 2} 50,${TOTAL_ALTURA / 2}`}
           fill="none"
-          stroke={"#A3E635"}
           strokeWidth="2"
           strokeLinejoin="round"
           strokeLinecap="round"

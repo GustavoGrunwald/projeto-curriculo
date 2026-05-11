@@ -6,9 +6,9 @@ import { FaRightLong, FaLeftLong } from "react-icons/fa6";
 const textoBotoes = ["Gustavo Grunwald", "Inglês", "Italiano", "Espanhol"];
 const descricoesIdiomas = [
   "",
-  "Avançado - 2 anos de curso na Wizard (B2) + Experiência no exterior",
-  "Intermediário - Imersão na Itália ",
-  "Básico - Aulas na escola",
+  "Avançado- 2 anos Wizard (B2)+Experiência no exterior",
+  "Intermediário- Imersão na Itália ",
+  "Básico- Aulas na escola",
 ];
 
 function Switch({
@@ -23,7 +23,7 @@ function Switch({
   onAlternar: (idx: number) => void;
 }) {
   return (
-    <div className="flex gap-4 mt-4 justify-between items-center w-100 shrink-0">
+    <div className="flex mt-4 justify-between items-center w-100 shrink-0">
       <h1
         className={
           estadoAtivo
@@ -136,15 +136,22 @@ export function Idiomas() {
             {isClicked ? <FaLeftLong /> : <FaRightLong />}
           </p>
         </div>
-        <p
+        <div
           className={
             isClicked
               ? ComponentsStyle.textoDescicao.ativo
               : ComponentsStyle.textoDescicao.inativo
           }
         >
-          {descricao}
-        </p>
+          <div className="flex items-start flex-wrap">
+            <span className={ComponentsStyle.textoDescicao.prompt}>
+              C:\SISTEMA\IDIOMAS{">"}
+            </span>
+
+            <span className="leading-relaxed">{descricao}</span>
+            <span className={ComponentsStyle.textoDescicao.cursor} />
+          </div>
+        </div>
       </div>
     ) : (
       <div></div>

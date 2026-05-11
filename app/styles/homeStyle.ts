@@ -17,7 +17,7 @@ export const HomeStyle = {
     "font-fira text-6xl font-bold text-white text-center ",
   containerIntrdocaoConteudo:
     "flex flex-row gap-4 mt-10 text-gray-300 font-fira ",
-  paragrafoConteudo: "text-xl text-justify w-[75%]",
+  paragrafoConteudo: "text-lg text-justify w-[75%]",
   linhaIntroducaoConteudo:
     " bg-gradient-to-b from-cyan-400 to-blue-500 w-[1px] ",
   cursorPisca: "cursor-pisca",
