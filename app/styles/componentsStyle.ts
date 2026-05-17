@@ -1,5 +1,3 @@
-import { Activity } from "react";
-
 export const ComponentsStyle = {
   barraBateria: {
     ativo:

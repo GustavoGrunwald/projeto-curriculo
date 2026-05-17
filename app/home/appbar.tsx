@@ -18,10 +18,10 @@ export function AppBar() {
           />
         </div>
         <div className="flex w-full justify-center p-2 gap-20">
-          <a href="home" className={HomeStyle.linkAppBar}>
+          <a href="/" className={HomeStyle.linkAppBar}>
             Home
           </a>
-          <a href="chat" className={HomeStyle.linkAppBar}>
+          <a href="chatIA" className={HomeStyle.linkAppBar}>
             IA Chat
           </a>
         </div>
