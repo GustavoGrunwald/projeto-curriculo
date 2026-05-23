@@ -1,57 +1,19 @@
-import { ComponentsStyle } from "~/styles/componentsStyle";
 import { HomeStyle } from "../styles/homeStyle";
-import { useEffect, useState } from "react";
-import { FaRightLong, FaLeftLong } from "react-icons/fa6";
-
-const textoBotoes = ["Gustavo Grunwald", "Inglês", "Italiano", "Espanhol"];
-const descricoesIdiomas = [
-  "",
-  "Avançado- 2 anos Wizard (B2)+Experiência no exterior",
-  "Intermediário- Imersão na Itália ",
-  "Básico- Aulas na escola",
+import { useRef, useState } from "react";
+import { FaArrowRightLong } from "react-icons/fa6";
+import { PainelBancoDados } from "~/components/PainelBancoDados";
+import { Switch } from "~/components/Switch";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { div } from "framer-motion/client";
+const idiomas = [
+  { nome: "Gustavo Grunwald", descricao: "" },
+  {
+    nome: "Inglês",
+    descricao: "Avançado - 2 anos Wizard (B2) + Experiência no exterior",
+  },
+  { nome: "Italiano", descricao: "Intermediário - Imersão na Itália " },
+  { nome: "Espanhol", descricao: "Básico - Aulas na escola" },
 ];
-
-function Switch({
-  index,
-  texto,
-  estadoAtivo,
-  onAlternar,
-}: {
-  index: number;
-  texto: string;
-  estadoAtivo: boolean;
-  onAlternar: (idx: number) => void;
-}) {
-  return (
-    <div className="flex mt-4 justify-between items-center w-100 shrink-0">
-      <h1
-        className={
-          estadoAtivo
-            ? HomeStyle.idiomas.textoAtivo
-            : HomeStyle.idiomas.textoInativo
-        }
-      >
-        {texto}
-      </h1>
-      <div
-        className={
-          estadoAtivo
-            ? ComponentsStyle.switch.ativo
-            : ComponentsStyle.switch.inativo
-        }
-        onClick={() => onAlternar(index)}
-      >
-        <div
-          className={
-            estadoAtivo
-              ? ComponentsStyle.bolinhaSwitch.ativo
-              : ComponentsStyle.bolinhaSwitch.inativo
-          }
-        ></div>
-      </div>
-    </div>
-  );
-}
 
 export function Idiomas() {
   const [estadosSwitch, setEstadosSwitch] = useState([
@@ -60,129 +22,134 @@ export function Idiomas() {
     { index: 2, estado: false },
     { index: 3, estado: false },
   ]);
+  const [idiomaSelecionado, setIdiomaSelecionado] = useState({
+    nome: "",
+    descricao: "",
+  });
+  const [isPainelOpended, setIsPainelOpended] = useState(false);
+
+  function abrirPainel({
+    idioma,
+    descricao,
+  }: {
+    idioma: string;
+    descricao: string;
+  }) {
+    setIsPainelOpended((prevAberto) => {
+      if (prevAberto && idiomaSelecionado.nome === idioma) {
+        return false;
+      }
+      setIdiomaSelecionado({ nome: idioma, descricao: descricao });
+      return true;
+    });
+  }
 
   function alternarEstado(index: number) {
     setEstadosSwitch((prevEstados) => {
       let novosEstados;
 
       if (index === 0) {
-        // Pega o estado inverso do index 0
         const estado = !prevEstados.find((i) => i.index === 0)?.estado;
-        // Atualiza todos os estados pelo novo estado geral
         novosEstados = prevEstados.map((item) => ({
           ...item,
           estado: estado,
         }));
+
+        if (!estado) {
+          setIsPainelOpended(false);
+        }
       } else {
-        // Lógica de cada item
         novosEstados = prevEstados.map((item) =>
           item.index === index ? { ...item, estado: !item.estado } : item,
         );
 
-        // Pega os estados dos idiomas, se todos tiverem true retorna true, se não retorna false
-        const idiomas = novosEstados.filter((item) => item.index !== 0);
-        const idiomasLigados = idiomas.every((item) => item.estado);
+        const idiomasFiltrados = novosEstados.filter(
+          (item) => item.index !== 0,
+        );
+        const idiomasLigados = idiomasFiltrados.every((item) => item.estado);
 
-        // Atualiza o index 0 com base nos idiomas
         novosEstados = novosEstados.map((item) =>
           item.index === 0 ? { ...item, estado: idiomasLigados } : item,
         );
+
+        const switchModificado = novosEstados.find(
+          (item) => item.index === index,
+        );
+        const nomeIdiomaModificado = idiomas[index].nome;
+
+        if (
+          switchModificado &&
+          !switchModificado.estado &&
+          idiomaSelecionado.nome === nomeIdiomaModificado
+        ) {
+          setIsPainelOpended(false);
+        }
       }
 
       return novosEstados;
     });
   }
 
-  function Descricoes({
-    index,
-    descricao,
-    estadoAtivo,
-  }: {
-    index: number;
-    descricao: string;
-    estadoAtivo: boolean;
-  }) {
-    const [isClicked, setIsClicked] = useState(false);
-    const [isGustavoLigado, setIsGustavoLigado] = useState(
-      estadosSwitch[0].estado,
-    );
-    useEffect(() => {
-      setIsGustavoLigado(estadosSwitch[0].estado);
-    }, [estadosSwitch[0].estado]);
-    function aparecerDescricao() {
-      setIsClicked(!isClicked);
-    }
-    return index != 0 ? (
-      <div className={"flex flex-row items-center pl-10 gap-5"}>
-        <div
-          className={
-            isGustavoLigado
-              ? isClicked
-                ? ComponentsStyle.botaoDescricao.ativo
-                : ComponentsStyle.botaoDescricao.semiativo
-              : ComponentsStyle.botaoDescricao.inativo
-          }
-          onClick={aparecerDescricao}
-        >
-          <p
-            className={
-              isGustavoLigado
-                ? isClicked
-                  ? ComponentsStyle.iconDescricao.ativo
-                  : ComponentsStyle.iconDescricao.semiativo
-                : ComponentsStyle.iconDescricao.inativo
-            }
-          >
-            {isClicked ? <FaLeftLong /> : <FaRightLong />}
-          </p>
-        </div>
-        <div
-          className={
-            isClicked
-              ? ComponentsStyle.textoDescicao.ativo
-              : ComponentsStyle.textoDescicao.inativo
-          }
-        >
-          <div className="flex items-start flex-wrap">
-            <span className={ComponentsStyle.textoDescicao.prompt}>
-              C:\SISTEMA\IDIOMAS{">"}
-            </span>
-
-            <span className="leading-relaxed">{descricao}</span>
-            <span className={ComponentsStyle.textoDescicao.cursor} />
+  const containerRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+  const opacidade = useTransform(
+    scrollYProgress,
+    [0, 0.25, 0.75, 1],
+    [0, 1, 1, 0],
+    { clamp: false },
+  );
+  return (
+    <div className={HomeStyle.containerConteudo + " h-100"} ref={containerRef}>
+      <motion.div
+        style={{
+          opacity: opacidade,
+        }}
+      >
+        <h1 className={HomeStyle.tituloResumoProfissional}>Idiomas</h1>
+        <div className="flex flex-row gap-10">
+          <div className="flex flex-col w-1/2">
+            {idiomas.map((idioma, index) => (
+              <div key={index} className="shrink-0 flex items-center gap-10">
+                <Switch
+                  index={index}
+                  texto={idioma.nome}
+                  estadoAtivo={estadosSwitch[index].estado}
+                  onAlternar={alternarEstado}
+                />
+                {index !== 0 && (
+                  <p className={HomeStyle.idiomas.textoAtivo}>
+                    {estadosSwitch.every((item) => item.estado) ? (
+                      <FaArrowRightLong
+                        className="inline cursor-pointer"
+                        onClick={() =>
+                          abrirPainel({
+                            idioma: idioma.nome,
+                            descricao: idioma.descricao,
+                          })
+                        }
+                      />
+                    ) : (
+                      " "
+                    )}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="items-center flex">
+            {isPainelOpended && (
+              <PainelBancoDados
+                key={idiomaSelecionado.nome}
+                idioma={idiomaSelecionado.nome}
+                descricao={idiomaSelecionado.descricao}
+              />
+            )}
           </div>
         </div>
-      </div>
-    ) : (
-      <div></div>
-    );
-  }
-  return (
-    <div className={HomeStyle.containerConteudo + " h-100"}>
-      <h1 className={HomeStyle.tituloResumoProfissional}>Idiomas</h1>
-      <div>
-        <div className="flex flex-col w-full ">
-          {textoBotoes.map((texto, index) => (
-            <div
-              key={index}
-              className="
-            shrink-0 flex"
-            >
-              <Switch
-                index={index}
-                texto={texto}
-                estadoAtivo={estadosSwitch[index].estado}
-                onAlternar={alternarEstado}
-              />
-              <Descricoes
-                index={index}
-                descricao={descricoesIdiomas[index]}
-                estadoAtivo={estadosSwitch[index].estado}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

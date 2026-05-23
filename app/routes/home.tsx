@@ -1,10 +1,10 @@
-import { Introducao } from "~/home/introducao";
-import { AppBar } from "../home/appbar";
-import { ResumoProfissional } from "~/home/resumoprofissional";
-import { Formacao } from "~/home/formacao";
-import { Idiomas } from "~/home/idiomas";
-import { Informatica } from "~/home/informatica";
-import { Experiencia } from "~/home/experiencia";
+import { Introducao } from "~/home/Introducao";
+import { AppBar } from "../home/Appbar";
+import { ResumoProfissional } from "~/home/Resumoprofissional";
+import { Formacao } from "~/home/Formacao";
+import { Idiomas } from "~/home/Idiomas";
+import { Informatica } from "~/home/Informatica";
+import { Experiencia } from "~/home/Experiencia";
 
 export default function Home() {
   return (

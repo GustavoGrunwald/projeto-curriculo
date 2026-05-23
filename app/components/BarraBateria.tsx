@@ -1,5 +1,3 @@
-import type { index } from "@react-router/dev/routes";
-import { Component } from "react";
 import { ComponentsStyle } from "~/styles/componentsStyle";
 
 export function BarraBateria(props: { isHovering: boolean; index: number }) {

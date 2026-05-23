@@ -1,5 +1,5 @@
 import { FaBars } from "react-icons/fa";
-import { SideBar } from "./sidebar";
+import { SideBar } from "./Sidebar";
 import { useState } from "react";
 import { HomeStyle } from "../styles/homeStyle";
 

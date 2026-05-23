@@ -1,5 +1,3 @@
-import { links } from "~/root";
-
 export const HomeStyle = {
   containerAppBar:
     "flex items-center border-b-2 border-gray-700 mt-4 p-2 py-4 mx-30 fixed top-0 left-0 right-0",
@@ -12,7 +10,7 @@ export const HomeStyle = {
   containerContentSideBar: "mt-15 flex flex-col gap-4",
   linkSideBar:
     "relative  w-fit text-white text-base after:content-[''] after:absolute after:w-full after:h-[2px] after:bg-gradient-to-r after:from-cyan-400 after:to-blue-500 after:bottom-[-5px] after:left-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-500 hover:before:scale-x-100 hover:after:scale-x-100",
-  containerConteudo: "mt-50 mx-110",
+  containerConteudo: " mx-110 min-h-[70vh]",
   tituloPrincipalConteudo:
     "font-fira text-6xl font-bold text-white text-center ",
   containerIntrdocaoConteudo:

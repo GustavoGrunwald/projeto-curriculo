@@ -7,7 +7,7 @@ export const conexoesStyle = {
   ${
     ativo
       ? "stroke-[#3b82f6] drop-shadow-[0_0_8px_#3b82f6]"
-      : "stroke-slate-700 opacity-40"
+      : "stroke-slate-200 opacity-40"
   }
 `,
 

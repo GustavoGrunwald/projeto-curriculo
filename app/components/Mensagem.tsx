@@ -14,9 +14,9 @@ export function Mensagem({ texto, isIA }: { texto: string; isIA: boolean }) {
 
         <div className={chatStyles.mensagem.barraLateral(isIA)} />
         <div className="mb-3 flex items-center gap-2">
-          <div className="h-2.5 w-2.5 rounded-full bg-red-400" />
-          <div className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
-          <div className="h-2.5 w-2.5 rounded-full bg-green-400" />
+          <div className={chatStyles.mensagem.bolinhas + " bg-red-400"} />
+          <div className={chatStyles.mensagem.bolinhas + " bg-yellow-400"} />
+          <div className={chatStyles.mensagem.bolinhas + " bg-green-400"} />
 
           <span className="ml-2 text-[11px] text-cyan-300/70">
             {isIA ? "assistant.tsx" : "user.tsx"}

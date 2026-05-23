@@ -30,5 +30,6 @@ export const chatStyles = {
     footer:
       " mt-4 flex items-center justify-between border-t border-white/5 pt-2 text-[10px] text-cyan-300/50 ",
     grid: " pointer-events-none absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#fff_1px,transparent_1px),linear-gradient(to_bottom,#fff_1px,transparent_1px)] bg-size-[24px_24px] ",
+    bolinhas: "h-2.5 w-2.5 rounded-full",
   },
 };

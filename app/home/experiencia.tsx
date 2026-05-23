@@ -1,3 +1,4 @@
+import { Terminal } from "~/components/Terminal";
 import { HomeStyle } from "~/styles/homeStyle";
 
 export function Experiencia() {
@@ -6,6 +7,9 @@ export function Experiencia() {
       <h1 className={HomeStyle.tituloResumoProfissional}>
         Experiência Complementares
       </h1>
+      <div className="flex justify-center">
+        <Terminal />
+      </div>
     </div>
   );
 }

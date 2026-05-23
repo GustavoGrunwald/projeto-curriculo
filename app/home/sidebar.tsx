@@ -22,9 +22,6 @@ export function SideBar({ isOpen }: { isOpen: boolean }) {
           git checkout informatica
         </a>
         <a href="" className={HomeStyle.linkSideBar}>
-          {"GET /api/v1/cursos HTTP/1.1"}
-        </a>
-        <a href="" className={HomeStyle.linkSideBar}>
           {"</ExperienciasComplementares> "}
         </a>
       </div>

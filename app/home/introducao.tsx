@@ -1,6 +1,8 @@
 import { HomeStyle } from "../styles/homeStyle";
 import { useTypewriter } from "../hooks/functions";
 import { TextoCompletoIntroducao } from "../data/dados";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const informativosIntroducao = [
   "16 anos (04/08/2009)",
@@ -11,8 +13,27 @@ const informativosIntroducao = [
 
 export function Introducao() {
   const textoExibido = useTypewriter(TextoCompletoIntroducao, 15);
+  const secaoRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: secaoRef,
+    offset: ["start start", "end start"],
+  });
+
+  const escala = useTransform(scrollYProgress, [0, 1], [1, 0.85]);
+  const opacidade = useTransform(scrollYProgress, [0, 0.5], [1, 0.5]);
+
   return (
-    <div className={HomeStyle.containerConteudo + " h-100"}>
+    <motion.div
+      ref={secaoRef}
+      className={HomeStyle.containerConteudo + " will-change-transform mt-50"}
+      style={{
+        scale: escala,
+        opacity: opacidade,
+      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <h1 className={HomeStyle.tituloPrincipalConteudo}>
         {"/>_Gustavo Grunwald"}
         <span className={HomeStyle.cursorPisca}>_</span>
@@ -22,7 +43,9 @@ export function Introducao() {
         <div className={HomeStyle.linhaIntroducaoConteudo}></div>
         <div className="flex flex-col">
           {informativosIntroducao.map((texto) => (
-            <p className={HomeStyle.paragrafoConteudo}>{texto}</p>
+            <p key={texto} className={HomeStyle.paragrafoConteudo}>
+              {texto}
+            </p>
           ))}
           <a
             className={HomeStyle.linkSideBar}
@@ -42,6 +65,6 @@ export function Introducao() {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

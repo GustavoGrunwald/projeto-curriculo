@@ -2,6 +2,7 @@ import { FaMinusCircle, FaPlusCircle, FaRegSquare } from "react-icons/fa";
 import { useState } from "react";
 import { SubConexao } from "../components/SubConexao";
 import { conexoesStyle } from "../styles/conexoesStyle";
+import { motion, MotionValue, useTransform } from "framer-motion";
 
 interface PropriedadesLinha {
   pontos: string;
@@ -9,6 +10,7 @@ interface PropriedadesLinha {
   localizacao: string;
   conteudo: any;
   localizacaoTexto: string;
+  scrollProgress: MotionValue<number>;
 }
 
 export function LinhaConexao({
@@ -17,26 +19,44 @@ export function LinhaConexao({
   localizacao,
   conteudo,
   localizacaoTexto,
+  scrollProgress,
 }: PropriedadesLinha) {
   const [estaClicado, setEstaClicado] = useState(false);
 
+  const progressoLinha = useTransform(
+    scrollProgress,
+    [0, 0.1, 0.3, 0.75, 0.95],
+    [0, 0, 1, 1, 0],
+  );
+  const converterPontosParaPath = (stringDePontos: string) => {
+    const pares = stringDePontos.trim().split(/\s+/);
+    return pares.reduce((acc, par, index) => {
+      const [x, y] = par.split(",");
+      return acc + (index === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`);
+    }, "");
+  };
+
+  const pathData = converterPontosParaPath(pontos);
   return (
     <div
       className={`${conexoesStyle.caixaPrincipal} ${localizacao}`}
       style={{ width: "250px", height: "200px" }}
     >
       <svg className={conexoesStyle.svgArea} style={{ zIndex: 5 }}>
-        <polyline
-          points={pontos}
+        <motion.path
+          d={pathData}
           fill="none"
-          strokeWidth="2"
+          strokeWidth="3"
           strokeLinejoin="round"
           strokeLinecap="round"
           className={conexoesStyle.poligonoLinha(estaClicado)}
+          style={{ pathLength: progressoLinha }}
         />
       </svg>
-
-      <div
+      <motion.div
+        style={{
+          opacity: useTransform(progressoLinha, [0.8, 1], [0, 1]),
+        }}
         className={`${conexoesStyle.botaoContainer} ${localizacaoMais}`}
         onClick={(e) => {
           e.stopPropagation();
@@ -55,10 +75,8 @@ export function LinhaConexao({
             )}
           </div>
 
-          {/* TERMINAL */}
           {estaClicado && (
             <div className="z-50">
-              {" "}
               {conteudo &&
               (Array.isArray(conteudo)
                 ? conteudo.length > 0
@@ -110,7 +128,7 @@ export function LinhaConexao({
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

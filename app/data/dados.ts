@@ -85,3 +85,26 @@ export const conexoes = [
     localizacaoTexto: "",
   },
 ];
+
+export const resultadosExperiencias = [
+  {
+    nome: "Experiencias",
+    descricao:
+      "Imersão Itália \nCoordernação Grupo de Jovens JUMP \nEmpreendiemnto de doces \nProjeto Técnico: Chatbot Inteligente com IA",
+  },
+  {
+    nome: "Imersao-Italia",
+    descricao:
+      "Duração: Fui para a Itália no dia 17/12/2025 e voltei no dia {12/01/2026}. \nCidades visitadas/Estudo: Verona, Trento, Veneza, Florença, Roma e Milão. \nHistória e Impacto: Esta experiência foi um divisor de águas no desenvolvimento pessoal. Durante a vivência em um ambiente 100% estrangeiro, precisou-se gerenciar a própria rotina, finanças e logística. Desenvolveu-se uma capacidade extrema de adaptação a cenários desconhecidos, resiliência cultural e agilidade na resolução de problemas reais do cotidiano em outro idioma. Aprimorou-se a fluência no italiano e expandiu-se a visão global.",
+  },
+  {
+    nome: "Coordenacao-Jovens-JUMP",
+    descricao:
+      "Período: De 10/2025 até hoje \nLiderança e Gestão: Responsável pelo planejamento dos encontros semanais do grupo, organização de retiros e participação de eventos. \nHabilidades Humanas (Soft Skills): Atuação direta na mediação de conflitos, técnicas de engajamento e motivação de participantes, falar em público (oratória), além de prestar apoio no desenvolvimento pessoal e emocional dos jovens do grupo. ",
+  },
+  {
+    nome: "Empreendimento-Doces",
+    descricao:
+      "Período: De junho de 2025 até dezembro de 2025 \nAtividades desenvolvidas: Atuou-se de forma autônoma na fabricação, precificação, marketing e distribuição de produtos. \nHabilidades de Negócio: Responsável pelo controle financeiro básico (fluxo de caixa, cálculo de margem de lucro e custo de insumos), gerenciamento de estoque e logística de entregas. Desenvolveu-se forte competência em atendimento ao cliente, negociação direta e organização de cronogramas sob demanda. \nObjetivo: Obter capital suficiente para a realização da imersão na Itália, demonstrando iniciativa, disciplina e capacidade de execução em um projeto real de negócios. ",
+  },
+];
