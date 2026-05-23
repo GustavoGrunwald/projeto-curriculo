@@ -42,7 +42,6 @@ body {
 }
 
 .animar-pulo-barra {
-  /* A animação só deve rodar uma vez quando a barra aparecer */
   animation: puloBarra 0.5s ease-in-out;
 }
 

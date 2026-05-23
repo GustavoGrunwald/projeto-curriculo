@@ -10,9 +10,15 @@ export const experienciaStyle = {
   teclado: {
     container:
       "bg-gray-950 w-full h-50 rounded-b-2xl border-t-2 border-gray-600",
-    comandoAtivo: "font-fira border-gray-700 border-2 px-2 py-1",
+    comandoAtivo: "font-fira border-gray-700 border-2 px-2 py-1 cursor-pointer",
     comandoDesativo:
       "font-fira border-gray-900 border-2 px-2 py-1 text-gray-500",
     comandoInativo: "hidden",
+    titulo: "pt-2 text-xl font-bold font-fira mb-4",
+    layoutFlex: "flex justify-between items-start",
+    colunaBotoes: "p-5 flex-col flex gap-2",
+    divisorVertical: "h-50 w-0.5 bg-gray-600",
+    botaoPlay:
+      "p-5 flex flex-col items-center justify-center text-lime-400 hover:text-lime-300 transition-colors duration-200 cursor-pointer",
   },
 };

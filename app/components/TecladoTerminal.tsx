@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaPause, FaPlay, FaRunning } from "react-icons/fa";
+import { FaPlay } from "react-icons/fa";
 import { experienciaStyle } from "~/styles/experienciaStyle";
 
 export function TecladoTerminal({
@@ -16,44 +16,64 @@ export function TecladoTerminal({
   const [isListando, setIsListando] = useState(false);
   const [isDescrevendo, setIsDescrevendo] = useState(false);
   const [isExperienciaClicked, setIsExperienciaClicked] = useState(false);
+
   const handleClique = () => {
     if (isListando) {
       setIsExperienciaClicked(true);
     }
   };
 
+  const executarComando = () => {
+    setIsDescrevendo(false);
+    setIsListando(false);
+    atualizarHistorico();
+    handleClique();
+  };
+
+  useEffect(() => {
+    const dispararEnter = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        executarComando();
+      }
+    };
+
+    window.addEventListener("keydown", dispararEnter);
+
+    return () => {
+      window.removeEventListener("keydown", dispararEnter);
+    };
+  }, [isListando, isDescrevendo, atualizarHistorico]);
+
   const obterEstiloComando = (expNome: string) => {
     if (expNome === "Experiencias") {
-      if (isListando) {
-        return experienciaStyle.teclado.comandoAtivo;
-      } else {
-        return experienciaStyle.teclado.comandoDesativo;
-      }
+      return isListando
+        ? experienciaStyle.teclado.comandoAtivo
+        : experienciaStyle.teclado.comandoDesativo;
     }
-    if (expNome !== "Experiencias") {
-      if (isDescrevendo) {
-        return experienciaStyle.teclado.comandoAtivo;
-      } else {
-        if (!isExperienciaClicked) {
-          return experienciaStyle.teclado.comandoInativo;
-        }
-        return experienciaStyle.teclado.comandoDesativo;
-      }
+
+    if (isDescrevendo) {
+      return experienciaStyle.teclado.comandoAtivo;
     }
+
+    return !isExperienciaClicked
+      ? experienciaStyle.teclado.comandoInativo
+      : experienciaStyle.teclado.comandoDesativo;
   };
+
   return (
     <div className={experienciaStyle.teclado.container}>
-      <div className="flex justify-between">
-        <div className="p-5 flex-col flex gap-2">
+      <h1 className={experienciaStyle.teclado.titulo}>Terminal de Comando</h1>
+
+      <div className={experienciaStyle.teclado.layoutFlex}>
+        <div className={experienciaStyle.teclado.colunaBotoes}>
           <button
             className={experienciaStyle.teclado.comandoAtivo}
             onClick={() => {
               setComando("list");
               setIsListando(true);
               setIsDescrevendo(false);
-              if (!isListando) {
-                setExperiencia("");
-              }
+              if (!isListando) setExperiencia("");
             }}
           >
             List
@@ -86,9 +106,7 @@ export function TecladoTerminal({
               setComando("describe");
               setIsDescrevendo(true);
               setIsListando(false);
-              if (!isDescrevendo) {
-                setExperiencia("");
-              }
+              if (!isDescrevendo) setExperiencia("");
             }}
             disabled={!isExperienciaClicked}
           >
@@ -96,8 +114,8 @@ export function TecladoTerminal({
           </button>
         </div>
         <div className="flex">
-          <div className="h-50 w-0.5 bg-gray-600"></div>
-          <div className="p-5 flex-col flex gap-2">
+          <div className={experienciaStyle.teclado.divisorVertical}></div>
+          <div className={experienciaStyle.teclado.colunaBotoes}>
             {resultados.map((exp) => (
               <button
                 key={exp.nome}
@@ -114,17 +132,13 @@ export function TecladoTerminal({
           </div>
         </div>
         <div className="flex">
-          <div className="p-5 flex-col flex gap-2">
+          <div className={experienciaStyle.teclado.colunaBotoes}>
             <button
-              className="h-2"
-              onClick={() => {
-                setIsDescrevendo(false);
-                setIsListando(false);
-                atualizarHistorico();
-                handleClique();
-              }}
+              title="Pressione Enter para rodar"
+              className={experienciaStyle.teclado.botaoPlay}
+              onClick={executarComando}
             >
-              <FaPlay />
+              <FaPlay className="text-xl" />
             </button>
           </div>
         </div>

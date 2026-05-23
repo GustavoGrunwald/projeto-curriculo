@@ -1,87 +1,42 @@
-# Welcome to React Router!
+# Gustavo Grunwald — Dev Portfólio & Currículo Interativo
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Bem-vindo ao repositório do meu portfólio profissional! Este é um projeto full-stack moderno, desenvolvido com foco em alta performance, animações fluidas baseadas em rolagem e uma experiência interativa voltada para o universo do desenvolvimento de software.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
-
-## Features
-
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
-
-## Getting Started
-
-### Installation
-
-Install the dependencies:
-
-```bash
-npm install
-```
-
-### Development
-
-Start the development server with HMR:
-
-```bash
-npm run dev
-```
-
-Your application will be available at `http://localhost:5173`.
-
-## Building for Production
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-### Docker Deployment
-
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+O grande diferencial do projeto é a integração com um **Chat IA interativo**, permitindo que os visitantes conversem diretamente com um assistente inteligente treinado com o meu perfil profissional.
 
 ---
 
-Built with ❤️ using React Router.
+## Funcionalidades Principais
+
+- **Visual Geek/Developer:** Interface inspirada em ambientes de desenvolvimento (IDE).
+- **Animações Fluidas e Dinâmicas (Sticky Scroll):** Seções que interagem com a rolagem do mouse, fixando-se no centro da tela para uma leitura confortável antes de transicionar.
+- **Efeito Typewriter Dinâmico:** Textos digitados em tempo real de forma assíncrona baseados na visibilidade do componente.
+- **Chatbot Inteligente (IA):** Uma área interativa alimentada pela **API do Gemini**, onde recrutadores e visitantes podem tirar dúvidas em tempo real sobre minhas habilidades, experiências e projetos.
+
+## Tecnologias Utilizadas
+
+O projeto utiliza uma stack robusta para garantir velocidade, reatividade e inteligência:
+
+- **React / Next.js:** Framework base para a construção de componentes modulares de alto desempenho.
+- **Framer Motion:** Engine responsável pelo controle fino dos gatilhos de scroll (useScroll, useTransform, useInView).
+- **Tailwind CSS:** Utilitários de estilização para uma interface fluida, responsiva e otimizada.
+- **Google Gemini API:** Integração de inteligência artificial para o processamento de linguagem natural no chat.
+
+## Siga os passos abaixo para rodar o projeto localmente:
+
+- **Clone este repositório:**
+  Bash
+  git clone [https://github.com/GustavoGrunwald/projeto-curriculo.git]
+
+- **Acesse a pasta do projeto:**
+  cd projetp-curriculo
+
+- **Instale as dependências:**
+  npm install
+
+- **Crie um arquivo .env.local na raiz do projeto para configurar as chaves da API:**
+  VITE_GEMINI_API_KEY=SUA_CHAVE
+
+- **Inicie o servidor em modo de desenvolvimento:**
+  npm run dev
+  Abra o seu navegador e acesse http://localhost:5173.

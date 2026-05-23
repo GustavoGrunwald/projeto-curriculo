@@ -3,8 +3,7 @@ import { useRef, useState } from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { PainelBancoDados } from "~/components/PainelBancoDados";
 import { Switch } from "~/components/Switch";
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { div } from "framer-motion/client";
+import { motion, useScroll, useTransform } from "framer-motion";
 const idiomas = [
   { nome: "Gustavo Grunwald", descricao: "" },
   {
@@ -102,7 +101,11 @@ export function Idiomas() {
     { clamp: false },
   );
   return (
-    <div className={HomeStyle.containerConteudo + " h-100"} ref={containerRef}>
+    <div
+      className={HomeStyle.containerConteudo + " h-100"}
+      ref={containerRef}
+      id="idiomas"
+    >
       <motion.div
         style={{
           opacity: opacidade,

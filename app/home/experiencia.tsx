@@ -3,7 +3,7 @@ import { HomeStyle } from "~/styles/homeStyle";
 
 export function Experiencia() {
   return (
-    <div className={HomeStyle.containerConteudo + " h-150"}>
+    <div className={HomeStyle.containerConteudo + ""} id="experiencias">
       <h1 className={HomeStyle.tituloResumoProfissional}>
         Experiência Complementares
       </h1>

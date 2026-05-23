@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { FaMinus } from "react-icons/fa";
 import { FaRegSquare, FaX } from "react-icons/fa6";
 import { resumoProfissionalStyle } from "~/styles/resumoProfissionalSyle";
+import { blocosTexto } from "../data/dados";
 
 interface FragmentoTexto {
   texto: string;
@@ -31,14 +32,12 @@ function BlocoDigitado({
     eInView ? delay : 9999999,
   );
 
-  if (bloco.tipoElemento === "span") {
-    return <span className={bloco.classe}>{eInView ? textoExibido : ""}</span>;
-  }
-
-  return (
+  return bloco.tipoElemento === "span" ? (
+    <span className={bloco.classe}>{eInView ? textoExibido : ""}</span>
+  ) : (
     <p className={bloco.classe}>
       {eInView ? textoExibido : ""}
-      {index === 4 && <span className={HomeStyle.cursorPisca}>_</span>}{" "}
+      {index === 4 && <span className={HomeStyle.cursorPisca}>_</span>}
     </p>
   );
 }
@@ -48,38 +47,7 @@ export function ResumoProfissional() {
   const containerRef = useRef(null);
   const estaNaTela = useInView(containerRef, { once: true, amount: 0.2 });
 
-  const blocosTexto: FragmentoTexto[] = [
-    {
-      texto: "public class ",
-      classe: HomeStyle.codigosResumoProfissional,
-      tipoElemento: "span",
-    },
-    {
-      texto: "ResumoProfissional",
-      classe: HomeStyle.tituloResumoProfissional,
-      tipoElemento: "span",
-    },
-    {
-      texto:
-        ' {\n  public static void main(String[] args) {\n    System.out.print("',
-      classe: HomeStyle.codigosResumoProfissional,
-      tipoElemento: "span",
-    },
-    {
-      texto:
-        "Sou um estudante de ensino médio apaixonado por tecnologia e programação, com uma curiosidade insaciável sobre como as coisas funcionam. Tenho me dedicado a aprender cada vez mais sobre desenvolvimento de software, inteligência artificial e outras áreas relacionadas à tecnologia. Por meio deste site, compartilho minha jornada, projetos e experiências no mundo da tecnologia.",
-      classe: HomeStyle.textoInformativoResumoProfissional,
-      tipoElemento: "p",
-    },
-    {
-      texto: '");\n  }\n}',
-      classe: HomeStyle.codigosResumoProfissional,
-      tipoElemento: "p",
-    },
-  ];
-
   let delayAcumulado = 0;
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -90,13 +58,11 @@ export function ResumoProfissional() {
     [0, 0.25, 0.75, 1],
     [0, 1, 1, 0],
   );
-
   const escala = useTransform(
     scrollYProgress,
     [0, 0.35, 0.65, 1],
     [0.8, 1.05, 1.05, 0.8],
   );
-
   const rotacaoX = useTransform(
     scrollYProgress,
     [0, 0.4, 0.65, 1],
@@ -108,24 +74,22 @@ export function ResumoProfissional() {
       ref={containerRef}
       className="w-full relative py-32 flex items-center justify-center"
       style={{ perspective: 1500 }}
+      id="resumo"
     >
       <motion.div
-        style={{
-          scale: escala,
-          opacity: opacidade,
-          rotateX: rotacaoX,
-          transformOrigin: "center center",
-          transformStyle: "preserve-3d",
-        }}
+        style={{ scale: escala, opacity: opacidade, rotateX: rotacaoX }}
         className={`${HomeStyle.containerConteudo} ${resumoProfissionalStyle.container}`}
       >
         <div className={resumoProfissionalStyle.containerCard}>
           <div className={resumoProfissionalStyle.editorBar}>
-            <span className={resumoProfissionalStyle.editorBarItem}>File</span>
-            <span className={resumoProfissionalStyle.editorBarItem}>Edit</span>
-            <span className={resumoProfissionalStyle.editorBarItem}>
-              Selection
-            </span>
+            {["File", "Edit", "Selection"].map((item) => (
+              <span
+                key={item}
+                className={resumoProfissionalStyle.editorBarItem}
+              >
+                {item}
+              </span>
+            ))}
             <span className="text-gray-600">|</span>
             <span className="text-gray-400 font-mono text-[11px]">
               ResumoProfissional.java
@@ -138,15 +102,14 @@ export function ResumoProfissional() {
             >
               <FaMinus size={10} />
             </button>
-            <button className={`${resumoProfissionalStyle.controlButton}`}>
+            <button className={resumoProfissionalStyle.controlButton}>
               <FaRegSquare size={10} />
             </button>
-            <button className={`${resumoProfissionalStyle.controlButton}`}>
+            <button className={resumoProfissionalStyle.controlButton}>
               <FaX size={10} />
             </button>
           </div>
         </div>
-
         <div className="p-8 font-mono whitespace-pre-wrap leading-relaxed text-left">
           {blocosTexto.map((bloco, index) => {
             const delayAtual = delayAcumulado;

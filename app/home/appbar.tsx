@@ -5,12 +5,16 @@ import { HomeStyle } from "../styles/homeStyle";
 
 export function AppBar() {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div>
       <div>
         <SideBar isOpen={isOpen} />
       </div>
-      <div className={HomeStyle.containerAppBar}>
+      <div
+        className={`${HomeStyle.containerAppBar} z-9998`}
+        style={{ transform: "translateZ(9998px)" }}
+      >
         <div className="">
           <FaBars
             className={HomeStyle.barAppBar}

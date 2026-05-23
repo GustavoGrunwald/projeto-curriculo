@@ -49,6 +49,7 @@ export function Formacao() {
       ref={containerRef}
       className="w-full relative py-32 flex items-center justify-center"
       style={{ perspective: 1500 }}
+      id="formacao"
     >
       <motion.div
         style={{
@@ -78,7 +79,6 @@ export function Formacao() {
           style={{ x: movimentoXBateria }}
           className="md:col-span-5 flex justify-center items-center flex-col w-full"
         >
-          {/* Anos */}
           <div className="w-full max-w-60">
             <div className="flex items-center justify-between text-gray-400">
               <p className="text-xs m-1">2024</p>
@@ -97,8 +97,6 @@ export function Formacao() {
               ))}
             </div>
           </div>
-
-          {/* Componente da Bateria */}
           <Bateria />
         </motion.div>
       </motion.div>

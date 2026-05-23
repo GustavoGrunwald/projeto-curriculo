@@ -1,3 +1,5 @@
+import { HomeStyle } from "~/styles/homeStyle";
+
 export const TextoCompletoIntroducao =
   "Meu nome é Gustavo Grunwald, sou apaixonado por tecnologia e programação. Desde cedo, sempre tive uma curiosidade insaciável sobre como as coisas funcionam, o que me levou a explorar o mundo da tecnologia. Atualmente, estou cursando o ensino médio e tenho me dedicado a aprender cada vez mais sobre desenvolvimento de software, inteligência artificial e outras áreas relacionadas à tecnologia. Por isso, por meio desse site pretendo compartilhar um pouco da minha jornada, meus projetos e minhas experiências no mundo da tecnologia.";
 
@@ -108,3 +110,33 @@ export const resultadosExperiencias = [
       "Período: De junho de 2025 até dezembro de 2025 \nAtividades desenvolvidas: Atuou-se de forma autônoma na fabricação, precificação, marketing e distribuição de produtos. \nHabilidades de Negócio: Responsável pelo controle financeiro básico (fluxo de caixa, cálculo de margem de lucro e custo de insumos), gerenciamento de estoque e logística de entregas. Desenvolveu-se forte competência em atendimento ao cliente, negociação direta e organização de cronogramas sob demanda. \nObjetivo: Obter capital suficiente para a realização da imersão na Itália, demonstrando iniciativa, disciplina e capacidade de execução em um projeto real de negócios. ",
   },
 ];
+
+export const blocosTexto = [
+  {
+    texto: "public class ",
+    classe: HomeStyle.codigosResumoProfissional,
+    tipoElemento: "span",
+  },
+  {
+    texto: "ResumoProfissional",
+    classe: HomeStyle.tituloResumoProfissional,
+    tipoElemento: "span",
+  },
+  {
+    texto:
+      ' {\n  public static void main(String[] args) {\n    System.out.print("',
+    classe: HomeStyle.codigosResumoProfissional,
+    tipoElemento: "span",
+  },
+  {
+    texto:
+      "Sou estudante do Curso Técnico Integrado em Informática pelo IFPR (Instituto Federal do Paraná). Busco a primeira oportunidade profissional (Estágio ou Desenvolvedor Júnior) na área de tecnologia Sou disciplinado, autodidata e focado na resolução de problemas complexos. Tenho interesse em desenvolvimento de software (Front-end com React/TypeScript e Back-end com Java/PHP) e infraestrutura de banco de dados. O objetivo é aplicar o conhecimento acadêmico e técnico para entregar valor real à equipe, enquanto acelero o crescimento técnico na organização.",
+    classe: HomeStyle.textoInformativoResumoProfissional,
+    tipoElemento: "p",
+  },
+  {
+    texto: '");\n  }\n}',
+    classe: HomeStyle.codigosResumoProfissional,
+    tipoElemento: "p",
+  },
+] as const;

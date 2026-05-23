@@ -3,7 +3,7 @@ import imagem from "../images/imagem_brain_ia.png";
 import { LinhaConexao } from "../components/LinhasConexao";
 import { conexoes } from "../data/dados";
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll } from "framer-motion";
 
 export function Informatica() {
   const containerRef = useRef(null);
@@ -13,7 +13,11 @@ export function Informatica() {
   });
 
   return (
-    <div className={HomeStyle.containerConteudo + " h-150"} ref={containerRef}>
+    <div
+      className={HomeStyle.containerConteudo + " h-150 mb-50"}
+      ref={containerRef}
+      id="informatica"
+    >
       <div>
         <h1 className={HomeStyle.tituloResumoProfissional}>Informática</h1>
 

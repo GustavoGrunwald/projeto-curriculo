@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { FaMinus, FaRegSquare } from "react-icons/fa";
 import { FaX } from "react-icons/fa6";
 import { TecladoTerminal } from "./TecladoTerminal";
@@ -74,7 +74,7 @@ export function Terminal() {
   return (
     <div
       ref={containerRef}
-      className="w-full relative py-32 flex flex-col items-center justify-center"
+      className="w-full relative pb-32 flex flex-col items-center justify-center"
       style={{ perspective: 1500 }}
     >
       <motion.div
@@ -85,7 +85,7 @@ export function Terminal() {
           transformOrigin: "center center",
           transformStyle: "preserve-3d",
         }}
-        className={`${experienciaStyle.terminal.container} mb-10 w-full overflow-hidden will-change-transform antialiased subpixel-antialiased`}
+        className={`${experienciaStyle.terminal.container} mb-10 w-full overflow-hidden will-change-transform subpixel-antialiased`}
       >
         <div className="flex-1 flex flex-col min-h-0">
           <div className={experienciaStyle.terminal.header}>
