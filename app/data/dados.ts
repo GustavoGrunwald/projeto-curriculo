@@ -130,7 +130,7 @@ export const blocosTexto = [
   },
   {
     texto:
-      "Sou estudante do Curso Técnico Integrado em Informática pelo IFPR (Instituto Federal do Paraná). Busco a primeira oportunidade profissional (Estágio ou Desenvolvedor Júnior) na área de tecnologia Sou disciplinado, autodidata e focado na resolução de problemas complexos. Tenho interesse em desenvolvimento de software (Front-end com React/TypeScript e Back-end com Java/PHP) e infraestrutura de banco de dados. O objetivo é aplicar o conhecimento acadêmico e técnico para entregar valor real à equipe, enquanto acelero o crescimento técnico na organização.",
+      "Sou estudante do Curso Técnico Integrado em Informática pelo IFPR (Instituto Federal do Paraná). Busco a primeira oportunidade profissional na área de tecnologia Sou disciplinado, autodidata e focado na resolução de problemas complexos. Tenho interesse em desenvolvimento de software e infraestrutura de banco de dados. O objetivo é aplicar o conhecimento acadêmico e técnico para entregar valor real à equipe, enquanto acelero o crescimento técnico na organização.",
     classe: HomeStyle.textoInformativoResumoProfissional,
     tipoElemento: "p",
   },
